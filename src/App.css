@@ -1,5 +1,33 @@
 .App {
   text-align: center;
+  min-height: 100vh;
+  margin: 20px;
+}
+
+.header {
+  color: rgb(0, 41, 102);
+  text-align: center;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  font-size: calc(10px + 2vmin);
+  font-weight: bold;
+  font-family: Barlow, sans-serif;
+  line-height: 42px;
+  z-index: 1;
+  color: rgb(0, 41, 102);
+  margin: 0px;
+  transition: font-size 0.2s ease 0s;
+}
+
+.city {
+  text-align: left;
+  padding-left: 1vw;
+}
+
+#city {
+  margin-left: 1vw;
+  line-height: calc(10px + 2vmin);
 }
 
 .App-logo {
