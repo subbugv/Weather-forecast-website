@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Chart from "./Chart";
+import ChartInstance from "./ChartInstance";
 
 export default function ChartArea() {
   const [city, setCity] = useState('London');
@@ -13,7 +13,7 @@ export default function ChartArea() {
         <label htmlFor="city">Your City</label>
         <input type="text" placeholder="Enter your city" name="city" id="city" onChange={handleOnChange}/>
       </div>
-      <Chart city={city}/>
+      <ChartInstance city={city}/>
     </div>
   );
 }
