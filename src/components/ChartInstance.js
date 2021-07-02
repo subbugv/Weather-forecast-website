@@ -1,8 +1,8 @@
 import Chart from "chart.js/auto";
-import React, { useEffect, createRef } from "react";
+import React, { useEffect, useRef } from "react";
 
 export default function ChartInstance({ city }) {
-  const chartRef = createRef();
+  const chartRef = useRef();
   const labels = ["January", "February", "March", "April", "May", "June"];
   const data = {
     labels: labels,
@@ -52,11 +52,10 @@ export default function ChartInstance({ city }) {
 
   useEffect(() => {
     const myChartRef = chartRef.current.getContext("2d");
-    // console.log(myChartRef)
-    // myChartRef.clearRect(0, 0, window.innerHeight, window.innerWidth);
-    new Chart(myChartRef, config);
+    const chart = new Chart(myChartRef, config);
+    return () => chart.destroy()
   });
-  
+
   console.log(city, process.env.REACT_APP_API_KEY);
   return (
     <div>

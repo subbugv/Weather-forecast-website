@@ -11,7 +11,7 @@ export default function ChartArea() {
     <div>
       <div className="city">
         <label htmlFor="city">Your City</label>
-        <input type="text" placeholder="Enter your city" name="city" id="city" onChange={handleOnChange}/>
+        <input type="text" placeholder="Enter your city" name="city" id="city" value={city} onChange={handleOnChange}/>
       </div>
       <ChartInstance city={city}/>
     </div>
