@@ -1,14 +1,14 @@
 import { Box, makeStyles } from "@material-ui/core";
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import ChartArea from "./components/ChartArea/ChartArea";
 import CitySearch from "./components/CitySearch/CitySearch";
 import DayOverview from "./components/DayOverview/DayOverview";
+import { getGeoLocation } from "./helpers/getGeoLocation";
+import useGeoPosition from "./helpers/useGeoPosition";
 
 const useStyles = makeStyles({
   root: {
-    minHeight: "100vh",
     margin: "20px",
   },
   header: {
@@ -35,20 +35,40 @@ const useStyles = makeStyles({
 
 function App() {
   const classes = useStyles();
-  const [location, setLocation] = useState({
-    lat: "51.509865",
-    lon: "-0.118092",
-  });
+  // const [location, setLocation] = useState({
+  //   lat: "51.509865",
+  //   lon: "-0.118092",
+  // });
   const [city, setCity] = useState("London");
-  const weather = useSelector((state) => state.weather);
+  const [position, address, geoloading, geoerror] = useGeoPosition(
+    process.env.REACT_APP_GOOGLE_API_KEY,
+    city
+  );
   const dispatch = useDispatch();
+  // const getCurrentLocation = () => {
+  //   getGeoLocation()
+  //     .then((position) => {
+  //       setLocation({
+  //         lat: position.coords.latitude,
+  //         lon: position.coords.longitude,
+  //       });
+  //     })
+  //     .catch((err) => {
+  //       console.error(err.message);
+  //     });
+  // };
+    console.log(position)
   const handleOnChange = (e) => {
     setCity(e.target.value);
   };
-  console.log("weather inside app: ", weather);
+
+  // useEffect(() => {
+  //   getCurrentLocation();
+  // }, []);
+
   useEffect(() => {
-    dispatch({ type: "WEATHER_FETCH_REQUESTED", payload: location });
-  }, [location, dispatch]);
+    dispatch({ type: "WEATHER_FETCH_REQUESTED", payload: position });
+  }, [position, dispatch]);
   return (
     <Box className={classes.root}>
       <Box className={classes.header}>Weather Forecast</Box>
@@ -58,7 +78,7 @@ function App() {
           <DayOverview />
         </Box>
         <Box className={classes.bottomRight}>
-          <ChartArea city={city} />
+          <ChartArea />
         </Box>
       </Box>
     </Box>

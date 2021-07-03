@@ -1,17 +1,21 @@
 import Chart from "chart.js/auto";
 import React, { useEffect, useRef } from "react";
+import { useSelector } from "react-redux";
 
-export default function ChartInstance({ city }) {
+export default function ChartInstance() {
   const chartRef = useRef();
-  const labels = ["January", "February", "March", "April", "May", "June"];
+  const dayDetail = useSelector((state) => state?.weather?.day);
+  const tempData = dayDetail?.map((hour) => hour.temp);
   const data = {
-    labels: labels,
+    labels: dayDetail?.map((hour) => hour.time),
     datasets: [
       {
-        label: "My First dataset",
-        backgroundColor: "rgb(255, 99, 132)",
-        borderColor: "rgb(255, 99, 132)",
-        data: [0, 10, 5, 2, 20, 30, 45],
+        label: "Temparature",
+        fillColor: "#5689d6",
+        strokeColor: "#5689d6",
+        backgroundColor: "#5689d6",
+        borderColor: "#5689d6",
+        data: tempData,
       },
     ],
   };
@@ -24,7 +28,7 @@ export default function ChartInstance({ city }) {
       plugins: {
         title: {
           display: true,
-          text: "Chart.js Line Chart - Cubic interpolation mode",
+          text: "",
         },
       },
       interaction: {
@@ -32,19 +36,18 @@ export default function ChartInstance({ city }) {
       },
       scales: {
         x: {
-          display: true,
+          display: false,
           title: {
-            display: true,
+            display: false,
           },
         },
         y: {
-          display: true,
+          display: false,
           title: {
-            display: true,
-            text: "Value",
+            display: false,
           },
-          suggestedMin: -10,
-          suggestedMax: 200,
+          suggestedMin: Math.min(tempData),
+          suggestedMax: Math.max(tempData),
         },
       },
     },
@@ -53,10 +56,10 @@ export default function ChartInstance({ city }) {
   useEffect(() => {
     const myChartRef = chartRef.current.getContext("2d");
     const chart = new Chart(myChartRef, config);
-    return () => chart.destroy()
+    return () => chart.destroy();
   });
   return (
-    <div>
+    <div style={{ margin: "20px" }}>
       <canvas id="myChart" ref={chartRef}></canvas>
     </div>
   );

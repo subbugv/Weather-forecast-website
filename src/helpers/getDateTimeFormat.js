@@ -5,9 +5,9 @@ export const getTime = (timestamp) => {
 }
 
 export const getFullDate = (dt) => {
-    return date.format(new Date(dt * 1000), 'ddd, MMM DD YYYY, hh:mm A');
+    return date.format(new Date(dt * 1000), 'hh:mm A, ddd, MMM DD, YYYY');
 }
 
 export const getDate = (dt) => {
-    return date.format(new Date(dt * 1000), 'MMM DD YYYY');
+    return date.format(new Date(dt * 1000), 'MMM DD');
 }

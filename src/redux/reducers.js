@@ -4,6 +4,10 @@ export const reducer = (state = {}, action = {}) => {
       return { ...state, weather: action.weather };
     case "WEATHER_FETCH_FAILED":
       return { ...state, message: action.message };
+    case  "FETCH_LOCATION_SUCCESS":
+        return { ...state, location: action.location};
+    case "FETCH_LOCATION_FAILED":
+        return { ...state, message: action.message}
     default:
       return state;
   }

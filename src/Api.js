@@ -1,4 +1,4 @@
-import { getDate, getTime } from "./helpers/getDateTimeFormat";
+import { getDate, getTime, getFullDate } from "./helpers/getDateTimeFormat";
 
 export const Api = {
   fetchWeather: async ({ lat = "51.509865", lon = "-0.118092" }) => {
@@ -6,7 +6,7 @@ export const Api = {
     // const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
 
     try {
-    //    const res = await fetch(url);
+        //  const res = await fetch(url);
       const res = {
         lat: 51.5099,
         lon: -0.1181,
@@ -1389,24 +1389,25 @@ export const Api = {
           },
         ],
       };
-    //   const data = await res.json();
+        // const data = await res.json();
 
-    const data = res;
+      const data = res;
       const dayDetail = data.hourly.map((hour) => {
         return {
           time: getTime(hour.dt),
-          temp: hour.temp,
+          temp: Math.round(hour.temp),
         };
       });
 
-      const week = data.daily.slice(1, 4);
+      const week = data.daily.slice(1, 6);
 
       const weekDetail = week.map((day) => {
         return {
           date: getDate(day.dt),
           temp: {
-            min: day.temp.min,
-            max: day.temp.max,
+            min: Math.round(day.temp.min),
+            max: Math.round(day.temp.max),
+            day: Math.round(day.temp.day),
           },
           hum: day.humidity,
           desc: day.weather[0].main,
@@ -1415,15 +1416,18 @@ export const Api = {
       });
 
       const weatherInfo = {
-        city: data.timezone,
-        date: data.current.dt,
-        lat: data.lat,
-        lon: data.lon,
-        temp: data.current.temp,
-        icon: data.current.weather[0].icon,
-        desc: data.current.weather[0].main,
-        hum: data.current.humidity,
-        wind: data.current.wind_speed,
+        current: {
+          city: data.timezone,
+          date: getDate(data.current.dt),
+          fullDate: getFullDate(data.current.dt),
+          lat: data.lat,
+          lon: data.lon,
+          temp: Math.round(data.current.temp),
+          icon: data.current.weather[0].icon,
+          desc: data.current.weather[0].main,
+          hum: data.current.humidity,
+          wind: data.current.wind_speed,
+        },
         day: dayDetail,
         week: weekDetail,
       };
