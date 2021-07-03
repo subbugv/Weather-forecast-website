@@ -38,12 +38,20 @@ export default function DayOverview() {
   return (
     <Card className={classes.root}>
       <CardContent className={classes.cardContent}>
-        <Typography className={classes.date}>Time and Date</Typography>
-        <Typography className={classes.image}>Image</Typography>
-        <Typography className={classes.bottomLeft}>
-          <Typography className={classes.leftBottom}>
-            <Typography className={classes.humidity}>Humidity</Typography>
-            <Typography className={classes.wind}>Wind Speed</Typography>
+        <Typography component={"div"} className={classes.date}>
+          Time and Date
+        </Typography>
+        <Typography component={"div"} className={classes.image}>
+          Image
+        </Typography>
+        <Typography component={"div"} className={classes.bottomLeft}>
+          <Typography component={"div"} className={classes.leftBottom}>
+            <Typography component={"div"} className={classes.humidity}>
+              Humidity
+            </Typography>
+            <Typography component={"div"} className={classes.wind}>
+              Wind Speed
+            </Typography>
           </Typography>
         </Typography>
       </CardContent>

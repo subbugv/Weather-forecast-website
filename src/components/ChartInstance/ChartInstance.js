@@ -55,8 +55,6 @@ export default function ChartInstance({ city }) {
     const chart = new Chart(myChartRef, config);
     return () => chart.destroy()
   });
-
-  console.log(city, process.env.REACT_APP_API_KEY);
   return (
     <div>
       <canvas id="myChart" ref={chartRef}></canvas>
