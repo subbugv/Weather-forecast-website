@@ -1,11 +1,9 @@
 import { Box, makeStyles } from "@material-ui/core";
-import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import ChartArea from "./components/ChartArea/ChartArea";
 import CitySearch from "./components/CitySearch/CitySearch";
 import DayOverview from "./components/DayOverview/DayOverview";
-import { getGeoLocation } from "./helpers/getGeoLocation";
-import useGeoPosition from "./helpers/useGeoPosition";
 
 const useStyles = makeStyles({
   root: {
@@ -35,50 +33,24 @@ const useStyles = makeStyles({
 
 function App() {
   const classes = useStyles();
-  // const [location, setLocation] = useState({
-  //   lat: "51.509865",
-  //   lon: "-0.118092",
-  // });
-  const [city, setCity] = useState("");
-  const [position, address, geoloading, geoerror] = useGeoPosition();
   const dispatch = useDispatch();
-  // const getCurrentLocation = () => {
-  //   getGeoLocation()
-  //     .then((position) => {
-  //       setLocation({
-  //         lat: position.coords.latitude,
-  //         lon: position.coords.longitude,
-  //       });
-  //     })
-  //     .catch((err) => {
-  //       console.error(err.message);
-  //     });
-  // };
-
-  const handleOnChange = (e) => {
-    const city = e.target.value;
-    if (city) setCity(city);
-  };
-
-  useEffect(()=>{
-    
-  })
-
-  // useEffect(() => {
-  //   getCurrentLocation();
-  // }, []);
-
-  useEffect(()=>{
-    setCity(address)
-  }, [address])
+  const position = useSelector((state) => state?.cityDetails?.position);
 
   useEffect(() => {
-    dispatch({ type: "WEATHER_FETCH_REQUESTED", payload: position });
+    dispatch({
+      type: "WEATHER_FETCH_REQUESTED",
+      payload: position
+        ? position
+        : {
+            lat: 51.5073509,
+            lon: -0.1277583,
+          },
+    });
   }, [position, dispatch]);
   return (
     <Box className={classes.root}>
       <Box className={classes.header}>Weather Forecast</Box>
-      <CitySearch handleOnChange={handleOnChange} city={city} />
+      <CitySearch />
       <Box className={classes.bottom}>
         <Box className={classes.bottomLeft}>
           <DayOverview />

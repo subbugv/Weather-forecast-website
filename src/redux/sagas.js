@@ -12,10 +12,8 @@ function* fetchWeather(action) {
 
 function* fetchLocation(action) {
   try {
-    console.log("inside fetch saga location")
-    const location = yield Api.fetchLoaction();
-    console.log(location)
-    yield put({ type: "FETCH_LOCATION_SUCCESS", location: location });
+    const cityDetails = yield Api.fetchLatAndLon(action.payload);
+    yield put({ type: "FETCH_LOCATION_SUCCESS", cityDetails: cityDetails });
   } catch (e) {
     yield put({ type: "FETCH_LOCATION_FAILED", message: e.message });
   }

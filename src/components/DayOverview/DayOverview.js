@@ -82,7 +82,7 @@ export default function DayOverview() {
           />
           <span className={classes.temp}>
             {dayDetail.temp}
-            <sup className={classes.sup}>&deg;F</sup>{" "}
+            <sup className={classes.sup}>&deg;C</sup>{" "}
           </span>
         </div>
         <Typography className={classes.desc}>{dayDetail.desc}</Typography>
