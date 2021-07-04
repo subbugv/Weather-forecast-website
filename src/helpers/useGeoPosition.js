@@ -1,11 +1,14 @@
 import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 
-const useGeoPosition = (key, city) => {
+const useGeoPosition = (
+  city = "London",
+  key = process.env.REACT_APP_GOOGLE_API_KEY
+) => {
   const [position, setPosition] = useState({ lat: null, lon: null });
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [formattedAddress, setFormattedAddress] = useState('')
+  const [formattedAddress, setFormattedAddress] = useState("");
 
   const fetchLatandLng = useCallback(async () => {
     try {
@@ -13,10 +16,10 @@ const useGeoPosition = (key, city) => {
       const res = await axios.get(
         `https://maps.googleapis.com/maps/api/geocode/json?address=${city}&key=${key}`
       );
-      const result = res?.data?.results[0]?.geometry?.location;
-      setFormattedAddress(res?.data.result[0].formatted_address)
-      if (result.lat !== null && result.lng !== null) {
+      const result = await res?.data?.results[0]?.geometry?.location;
+      if (result) {
         setPosition({ lat: result.lat, lon: result.lng });
+        setFormattedAddress(res.data.results[0].formatted_address);
       } else {
         setError(true);
       }
@@ -29,8 +32,8 @@ const useGeoPosition = (key, city) => {
 
   useEffect(() => {
     fetchLatandLng();
-  },[fetchLatandLng]);
-
+  }, [fetchLatandLng]);
+  // console.log(position, formattedAddress, loading, error)
   return [position, formattedAddress, loading, error];
 };
 

@@ -39,11 +39,8 @@ function App() {
   //   lat: "51.509865",
   //   lon: "-0.118092",
   // });
-  const [city, setCity] = useState("London");
-  const [position, address, geoloading, geoerror] = useGeoPosition(
-    process.env.REACT_APP_GOOGLE_API_KEY,
-    city
-  );
+  const [city, setCity] = useState("");
+  const [position, address, geoloading, geoerror] = useGeoPosition();
   const dispatch = useDispatch();
   // const getCurrentLocation = () => {
   //   getGeoLocation()
@@ -57,14 +54,23 @@ function App() {
   //       console.error(err.message);
   //     });
   // };
-    console.log(position)
+
   const handleOnChange = (e) => {
-    setCity(e.target.value);
+    const city = e.target.value;
+    if (city) setCity(city);
   };
+
+  useEffect(()=>{
+    
+  })
 
   // useEffect(() => {
   //   getCurrentLocation();
   // }, []);
+
+  useEffect(()=>{
+    setCity(address)
+  }, [address])
 
   useEffect(() => {
     dispatch({ type: "WEATHER_FETCH_REQUESTED", payload: position });
