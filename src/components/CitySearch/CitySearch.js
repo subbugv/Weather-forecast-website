@@ -19,7 +19,6 @@ export default function CitySearch() {
     setCity(e.target.value);
   };
   const handleOnBlur = () => {
-    console.log(city, address, defaultCity)
     if (city) setCity(city);
     else if (address) setCity(address);
     else setCity(defaultCity);
