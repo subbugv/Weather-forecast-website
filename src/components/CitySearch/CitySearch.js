@@ -25,7 +25,7 @@ export default function CitySearch() {
   };
 
   useEffect(() => {
-    setCity((prevState) => address);
+    if (address) setCity(address);
   }, [address]);
   return (
     <Box className={classes.root}>

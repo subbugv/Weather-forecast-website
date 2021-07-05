@@ -22,6 +22,7 @@ const useStyles = makeStyles({
   },
   bottom: {
     display: "flex",
+    flexWrap: "wrap",
   },
   bottomLeft: {
     width: "40%",

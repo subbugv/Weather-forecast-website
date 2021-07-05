@@ -1,12 +1,12 @@
-import React from "react";
+import React, { Fragment } from "react";
 import ChartInstance from "../ChartInstance/ChartInstance";
 import DaySelector from "../DaySelector/DaySelector";
 
 export default function ChartArea() {
   return (
-    <div>
+    <Fragment>
       <ChartInstance />
       <DaySelector />
-    </div>
+    </Fragment>
   );
 }
