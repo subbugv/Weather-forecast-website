@@ -1,12 +1,12 @@
 import { Box, makeStyles } from "@material-ui/core";
-import React, { useState } from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import ChartArea from "./components/ChartArea/ChartArea";
 import CitySearch from "./components/CitySearch/CitySearch";
 import DayOverview from "./components/DayOverview/DayOverview";
 
 const useStyles = makeStyles({
   root: {
-    minHeight: "100vh",
     margin: "20px",
   },
   header: {
@@ -33,22 +33,30 @@ const useStyles = makeStyles({
 
 function App() {
   const classes = useStyles();
-  const [city, setCity] = useState("London");
-  const handleOnChange = (e) => {
-    setCity(e.target.value);
-  };
+  const dispatch = useDispatch();
+  const position = useSelector((state) => state?.cityDetails?.position);
+
+  useEffect(() => {
+    dispatch({
+      type: "WEATHER_FETCH_REQUESTED",
+      payload: position
+        ? position
+        : {
+            lat: 51.5073509,
+            lon: -0.1277583,
+          },
+    });
+  }, [position, dispatch]);
   return (
     <Box className={classes.root}>
-      <Box className={classes.header}>
-        Weather Forecast
-      </Box>
-      <CitySearch handleOnChange={handleOnChange} city={city} />
+      <Box className={classes.header}>Weather Forecast</Box>
+      <CitySearch />
       <Box className={classes.bottom}>
         <Box className={classes.bottomLeft}>
           <DayOverview />
         </Box>
         <Box className={classes.bottomRight}>
-          <ChartArea city={city} />
+          <ChartArea />
         </Box>
       </Box>
     </Box>
