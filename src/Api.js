@@ -7,16 +7,17 @@ export const Api = {
     try {
       const res = await fetch(url);
       const data = await res.json();
+      const timeZoneOffset = data.timezone_offset;
       const dayDetail = data.hourly.map((hour) => {
         return {
-          time: getTime(hour.dt),
+          time: getTime(hour.dt+timeZoneOffset),
           temp: Math.round(hour.temp),
         };
       });
       const week = data.daily.slice(1, 6);
       const weekDetail = week.map((day) => {
         return {
-          date: getDate(day.dt),
+          date: getDate(day.dt+timeZoneOffset),
           temp: {
             min: Math.round(day.temp.min),
             max: Math.round(day.temp.max),
@@ -31,8 +32,8 @@ export const Api = {
       const weatherInfo = {
         current: {
           city: data.timezone,
-          date: getDate(data.current.dt),
-          fullDate: getFullDate(data.current.dt),
+          date: getDate(data.current.dt+timeZoneOffset),
+          fullDate: getFullDate(data.current.dt+timeZoneOffset),
           lat: data.lat,
           lon: data.lon,
           temp: Math.round(data.current.temp),
