@@ -1,4 +1,4 @@
-import { makeStyles, Box, TextField, Button } from "@material-ui/core";
+import { makeStyles, TextField, Button } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -28,7 +28,7 @@ export default function CitySearch() {
     if (address) setCity(address);
   }, [address]);
   return (
-    <Box className={classes.root}>
+    <div className={classes.root}>
       <TextField
         label="City"
         variant="outlined"
@@ -47,6 +47,6 @@ export default function CitySearch() {
       >
         Search
       </Button>
-    </Box>
+    </div>
   );
 }

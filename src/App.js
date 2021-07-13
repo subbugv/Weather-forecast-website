@@ -1,4 +1,4 @@
-import { Box, makeStyles } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ChartArea from "./components/ChartArea/ChartArea";
@@ -25,10 +25,12 @@ const useStyles = makeStyles({
     flexWrap: "wrap",
   },
   bottomLeft: {
-    width: "40%",
+    flex: 2,
+    minHeight: "300px",
+    minWidth: "300px",
   },
   bottomRight: {
-    width: "60%",
+    flex: 3,
   },
 });
 
@@ -49,18 +51,18 @@ function App() {
     });
   }, [position, dispatch]);
   return (
-    <Box className={classes.root}>
-      <Box className={classes.header}>Weather Forecast</Box>
+    <div className={classes.root}>
+      <div className={classes.header}>Weather Forecast</div>
       <CitySearch />
-      <Box className={classes.bottom}>
-        <Box className={classes.bottomLeft}>
+      <div className={classes.bottom}>
+        <div className={classes.bottomLeft}>
           <DayOverview />
-        </Box>
-        <Box className={classes.bottomRight}>
+        </div>
+        <div className={classes.bottomRight}>
           <ChartArea />
-        </Box>
-      </Box>
-    </Box>
+        </div>
+      </div>
+    </div>
   );
 }
 
