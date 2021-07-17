@@ -1,0 +1,25 @@
+.root {
+    width: 100%;
+  }
+  .card {
+    display: flex;
+    flex-direction: column;
+    height: 80%;
+    align-items: center;
+    justify-content: center;
+  }
+  .date {
+    height: 20%;
+  }
+  .icon {
+    height: 40%;
+    width: 65%;
+  }
+  .humidity {
+    height: 20%;
+    font-weight: lighter;
+    color: #68696b;
+  }
+  .humid {
+    height: 20%;
+  }

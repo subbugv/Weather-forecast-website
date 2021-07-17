@@ -1,0 +1,56 @@
+.root {
+    text-align: center;
+    height: 100%;
+  }
+  .cardContent {
+    text-align: center;
+    height: calc(100% - 40px);
+  }
+  .date {
+    height: 25%;
+    width: 100%;
+    font-weight: lighter;
+    color: #68696b;
+    font-size: 2vw;
+  }
+  .image {
+    height: 90%;
+    width: 60%;
+  }
+  .temp {
+    text-align: center;
+    font-size: 4vw;
+  }
+  .desc {
+    height: 14%;
+    font-size: 3vw;
+  }
+  .dayOverview {
+    height: 25%;
+    width: 100%;
+  }
+  .leftBottom {
+    display: flex;
+  }
+  .humidity {
+    width: 50%;
+  }
+  .wind {
+    width: 50%;
+  }
+  .humLabel {
+    font-weight: lighter;
+    color: #68696b;
+  }
+  .windLabel {
+    font-weight: lighter;
+    color: #68696b;
+  }
+  .iconAndTemp {
+    height: 36%;
+    display: flex;
+    align-items: center;
+  }
+  .sup {
+    font-size: 2vw;
+  }

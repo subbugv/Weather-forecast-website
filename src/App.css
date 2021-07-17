@@ -1,0 +1,26 @@
+.app {
+  margin: 20px;
+}
+.header {
+  color: rgb(0, 41, 102);
+  text-align: center;
+  font-size: calc(10px + 2vmin);
+  font-weight: bold;
+  font-family: Barlow, sans-serif;
+  line-height: 42px;
+  z-index: 1;
+  margin: 0px;
+  transition: font-size 0.2s ease 0s;
+}
+.bottom {
+  display: flex;
+  flex-wrap: wrap;
+}
+.bottomLeft {
+  flex: 2;
+  min-height: 300px;
+  min-width: 300px;
+}
+.bottomRight {
+  flex: 3;
+}
