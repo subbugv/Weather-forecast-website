@@ -13,5 +13,5 @@ export default function DaySelector() {
           return <DayPreview day={day} key={day + i} />;
         })
       : "Loading...";
-  return <div className="root">{weekInfo}</div>;
+  return <div className="daySelector">{weekInfo}</div>;
 }

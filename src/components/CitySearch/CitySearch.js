@@ -21,7 +21,7 @@ export default function CitySearch() {
     if (address) setCity(address);
   }, [address]);
   return (
-    <div className="root">
+    <div className="citySearch">
       <input
         value={city}
         onChange={handleOnChange}

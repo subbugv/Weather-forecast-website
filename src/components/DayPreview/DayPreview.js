@@ -3,7 +3,7 @@ import "./DayPreview.css"
 
 export default function DayPreview({ day }) {
   return (
-    <div className="root">
+    <div className="dayPreview">
         <div className="date">{day?.date}</div>
         <img
           className="icon"
