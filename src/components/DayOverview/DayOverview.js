@@ -7,7 +7,7 @@ export default function DayOverview() {
   const dayDetail = useSelector((state) => state?.weather?.current);
   return dayDetail ? (
     <Fragment>
-      <div className="date">{dayDetail?.fullDate}</div>
+      <div className={`date lighterFont `}>{dayDetail?.fullDate}</div>
       <div className="imageAndTemp">
         <img
           className="image"
@@ -22,12 +22,12 @@ export default function DayOverview() {
       <div className="desc">{dayDetail.desc}</div>
       <div className="humidityAndWind">
         <div className="humidity">
-          <div className="humLabel">Humidity</div>
-          <div>{dayDetail?.hum}%</div>
+          <div className={`humLabel lighterFont `}>Humidity</div>
+          <h4 className="normalFont">{dayDetail?.hum}%</h4>
         </div>
         <div className="wind">
-          <div className="windLabel">Wind Speed</div>
-          <div>{dayDetail?.wind}</div>
+          <div className={`windLabel lighterFont `}>Wind Speed</div>
+          <h4 className="normalFont">{dayDetail?.wind} m/s</h4>
         </div>
       </div>
     </Fragment>

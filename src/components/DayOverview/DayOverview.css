@@ -1,18 +1,25 @@
-
+.date {
+  padding: 20px 0;
+}
 .humidityAndWind {
+  padding: 20px 0;
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
 }
 .imageAndTemp {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
 }
-/* .sup {
-    font-size: 2vw;
-  } */
-
-@media screen and (min-width: 1280px) {
+.temp {
+  font-size: calc(10px + 3vmin);
+}
+.desc {
+  padding: 20px 0;
+  font-size: calc(10px + 2vmin);
+}
+@media screen and (min-width: 768px) {
   .date {
     flex: 1;
   }
