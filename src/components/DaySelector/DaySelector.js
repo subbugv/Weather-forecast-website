@@ -1,16 +1,9 @@
-import { Box, makeStyles } from "@material-ui/core";
 import React from "react";
 import { useSelector } from "react-redux";
 import DayPreview from "../DayPreview/DayPreview";
+import "./DaySelector.css"
 
-const useStyles = makeStyles({
-  root: {
-    display: "flex",
-    margin: "0 20px",
-  },
-});
 export default function DaySelector() {
-  const classes = useStyles();
   const current = useSelector((state) => state?.weather?.current);
   const week = useSelector((state) => state?.weather?.week);
   const weekInfo =
@@ -20,5 +13,5 @@ export default function DaySelector() {
           return <DayPreview day={day} key={day + i} />;
         })
       : "Loading...";
-  return <Box className={classes.root}>{weekInfo}</Box>;
+  return <div className="daySelector">{weekInfo}</div>;
 }

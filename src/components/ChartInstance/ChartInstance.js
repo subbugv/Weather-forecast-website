@@ -1,6 +1,7 @@
 import Chart from "chart.js/auto";
 import React, { useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
+import "./ChartInstance.css"
 
 export default function ChartInstance() {
   const chartRef = useRef();
@@ -127,10 +128,22 @@ export default function ChartInstance() {
           text: "Temparature",
           align: "start",
           color: "",
-          font: {
-            size: 24,
-            weight: "normal",
-            color: "#68696b",
+          font: function () {
+            const vw = Math.max(
+              document.documentElement.clientWidth || 0,
+              window.innerWidth || 0
+            );
+            const vh = Math.max(
+              document.documentElement.clientHeight || 0,
+              window.innerHeight || 0
+            );
+            const size = 10 + 0.01 * Math.min(vw, vh);
+            return {
+              size: size,
+              weight: "normal",
+              color: "#68696b",
+              family: "Barlow, sans-serif",
+            };
           },
         },
         legend: {
@@ -169,7 +182,7 @@ export default function ChartInstance() {
     return () => chart.destroy();
   });
   return (
-    <div style={{ margin: "20px" }}>
+    <div className={"chartInstance"}>
       <canvas id="myChart" ref={chartRef}></canvas>
     </div>
   );

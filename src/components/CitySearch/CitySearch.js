@@ -1,17 +1,10 @@
-import { makeStyles, TextField, Button } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
-const useStyles = makeStyles({
-  root: {
-    paddingLeft: "1vh",
-  },
-});
+import "./CitySearch.css"
 
 export default function CitySearch() {
   const defaultCity = "London";
   const [city, setCity] = useState(defaultCity);
-  const classes = useStyles();
   const dispatch = useDispatch();
   const address = useSelector((state) => state?.cityDetails?.city);
 
@@ -28,16 +21,13 @@ export default function CitySearch() {
     if (address) setCity(address);
   }, [address]);
   return (
-    <div className={classes.root}>
-      <TextField
-        label="City"
-        variant="outlined"
+    <div className="citySearch">
+      <input
         value={city}
         onChange={handleOnChange}
         onBlur={handleOnBlur}
       />
-      <Button
-        color="primary"
+      <button
         onClick={() =>
           dispatch({
             type: "FETCH_LOCATION_REQUESTED",
@@ -46,7 +36,7 @@ export default function CitySearch() {
         }
       >
         Search
-      </Button>
+      </button>
     </div>
   );
 }

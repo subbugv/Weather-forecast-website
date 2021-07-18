@@ -1,0 +1,44 @@
+.app {
+  margin: 20px;
+  background-color: white;
+  text-align: center;
+  padding: 0 20px;
+  font-size: calc(10px + 0.5vmin);
+  font-family: Barlow, sans-serif;
+  transition: font-size 0.2s ease 0s;
+}
+.header {
+  color: rgb(0, 41, 102);
+  font-weight: bold;
+  line-height: 42px;
+  z-index: 1;
+  margin: 0px;
+  font-size: calc(10px + 2vmin);
+  transition: font-size 0.2s ease 0s;
+}
+
+.dayOverview {
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+}
+.lighterFont {
+  font-weight: lighter;
+}
+.normalFont {
+  font-weight: normal;
+}
+@media screen and (min-width: 768px) {
+  .bottom {
+    display: flex;
+  }
+  .dayOverview {
+    flex: 3;
+  }
+  .bottomRight {
+    display: flex;
+    flex-direction: column;
+    flex: 5;    
+    margin: 20px 0 20px 20px;
+  }
+}

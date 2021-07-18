@@ -1,0 +1,11 @@
+/* .daySelector > div:nth-child(1) {
+  background-color: #ebf2fb;
+} */
+
+@media screen and (min-width: 768px) {
+  .daySelector {
+    display: flex;
+    flex: 2;
+    justify-content: space-evenly;
+  }
+}
