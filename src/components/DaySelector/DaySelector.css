@@ -1,4 +1,11 @@
-/* .daySelector {
+/* .daySelector > div:nth-child(1) {
+  background-color: #ebf2fb;
+} */
+
+@media screen and (min-width: 1280px) {
+  .daySelector {
     display: flex;
-    margin: 0 20px;
-  } */
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+}

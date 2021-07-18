@@ -3,28 +3,34 @@
   background-color: white;
   text-align: center;
   padding: 0 20px;
-  font-size: calc(10px + 2vmin);
+  font-size: calc(10px + 1vmin);
   font-family: Barlow, sans-serif;
+  transition: font-size 0.2s ease 0s;
 }
 .header {
   color: rgb(0, 41, 102);
-  font-size: calc(10px + 2vmin);
   font-weight: bold;
-  font-family: Barlow, sans-serif;
   line-height: 42px;
   z-index: 1;
   margin: 0px;
   transition: font-size 0.2s ease 0s;
 }
-/* .bottom {
+
+.dayOverview {
+  margin: 20px 0;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
 }
-.bottomLeft {
-  flex: 2;
-  min-height: 300px;
-  min-width: 300px;
+
+@media screen and (min-width: 1280px) {
+  .bottom {
+    display: flex;
+  }
+  .dayOverview {
+    flex: 2;
+  }
+  .bottomRight {
+    flex: 3;    
+    margin: 20px 0 20px 20px;
+  }
 }
-.bottomRight {
-  flex: 3;
-} */

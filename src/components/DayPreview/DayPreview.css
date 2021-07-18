@@ -26,3 +26,10 @@
   /* .humid {
     height: 20%;
   } */
+
+  @media screen and (min-width: 1280px) {
+    .dayPreview {
+      display: flex;
+      flex-direction: column;
+    }
+  }

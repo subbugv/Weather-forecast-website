@@ -26,9 +26,13 @@ function App() {
       <div className="header">Weather Forecast</div>
       <CitySearch />
       <div className="bottom">
+        <div className="dayOverview">
           <DayOverview />
+        </div>
+        <div className="bottomRight">
           <ChartInstance />
           <DaySelector />
+        </div>
       </div>
     </div>
   );

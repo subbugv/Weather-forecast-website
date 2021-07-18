@@ -1,6 +1,7 @@
 import Chart from "chart.js/auto";
 import React, { useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
+import "./ChartInstance.css"
 
 export default function ChartInstance() {
   const chartRef = useRef();
@@ -136,7 +137,7 @@ export default function ChartInstance() {
               document.documentElement.clientHeight || 0,
               window.innerHeight || 0
             );
-            const size = 10 + 0.02 * Math.min(vw, vh);
+            const size = 10 + 0.01 * Math.min(vw, vh);
             return {
               size: size,
               weight: "normal",
@@ -181,7 +182,7 @@ export default function ChartInstance() {
     return () => chart.destroy();
   });
   return (
-    <div>
+    <div className={"chartInstance"}>
       <canvas id="myChart" ref={chartRef}></canvas>
     </div>
   );

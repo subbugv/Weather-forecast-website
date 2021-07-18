@@ -28,7 +28,6 @@ export default function CitySearch() {
         onBlur={handleOnBlur}
       />
       <button
-        color="primary"
         onClick={() =>
           dispatch({
             type: "FETCH_LOCATION_REQUESTED",

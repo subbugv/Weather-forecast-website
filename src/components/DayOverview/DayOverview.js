@@ -1,11 +1,12 @@
 import React from "react";
+import { Fragment } from "react";
 import { useSelector } from "react-redux";
 import "./DayOverview.css";
 
 export default function DayOverview() {
   const dayDetail = useSelector((state) => state?.weather?.current);
   return dayDetail ? (
-    <div className="dayOverview">
+    <Fragment>
       <div className="date">{dayDetail?.fullDate}</div>
       <div className="imageAndTemp">
         <img
@@ -29,7 +30,7 @@ export default function DayOverview() {
           <div>{dayDetail?.wind}</div>
         </div>
       </div>
-    </div>
+    </Fragment>
   ) : (
     "Loading"
   );
